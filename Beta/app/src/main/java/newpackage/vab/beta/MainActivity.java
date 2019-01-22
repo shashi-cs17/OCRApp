@@ -31,25 +31,21 @@ public class MainActivity extends AppCompatActivity {
         {
              TextView txt= (TextView)findViewById(R.id.text);
 
-             Bitmap bitmap = null;
-            AssetManager asm= getAssets();
-            TessBaseAPI tbs= new TessBaseAPI();
+//            String DATA_PATH = Environment.getExternalStorageDirectory().getPath() + "/tessdata/";
+//            File file = new File(DATA_PATH);
+//
+//            if(!file.exists())
+//                 file.mkdirs();
 
+            TessBaseAPI tessBaseAPI = new TessBaseAPI();
+            tessBaseAPI.init(Environment.getExternalStorageDirectory().getPath(),"eng");
 
-
- //this line is currently causing sudden crash.  
-            tbs.init( Environment.getExternalStorageDirectory().toString() + "/TesseractSample/","eng");
-//comment it out to make the app run.
-            
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
-                ImageView img= (ImageView)findViewById(R.id.image);
-                tbs.setImage(bitmap);
-                txt.setText(tbs.getUTF8Text());
-                img.setImageBitmap(bitmap);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
+                tessBaseAPI.setImage(bitmap);
+                txt.setText(tessBaseAPI.getUTF8Text());
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.v("Msg","exception");
             }
 
 
@@ -69,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast tst= Toast.makeText(getApplicationContext(),"!",Toast.LENGTH_SHORT);
                 tst.show();
-                //minor toast to check if the button is functioning
 
                 Intent intent= new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
