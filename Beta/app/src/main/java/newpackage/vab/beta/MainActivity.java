@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast tst= Toast.makeText(getApplicationContext(),"!",Toast.LENGTH_SHORT);
                 tst.show();
+                //minor toast to check if the button is functioning
 
                 Intent intent= new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
