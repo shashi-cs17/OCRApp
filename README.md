@@ -60,7 +60,13 @@ and finally upload it to their respective directories on the official server of 
 - Ubuntu 18.04 (LTS)
 -	Tesseract OCR api
 
- 
+### Current Build Instructions
+- Clone the repo normally and build the project with android studio
+- Add a directory "tesseract" on the external storage of your device or the AVD and put the [language file](https://github.com/vaibhav2000/OCRApp/tree/master/Beta/app/src/main/assets) in it.
+And that's it.
+
+This method of making the app work will be fixed later on.
+
 
  
 
