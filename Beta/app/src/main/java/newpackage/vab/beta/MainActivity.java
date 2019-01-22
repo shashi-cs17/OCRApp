@@ -37,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+ //this line is currently causing sudden crash.  
             tbs.init( Environment.getExternalStorageDirectory().toString() + "/TesseractSample/","eng");
-
+//comment it out to make the app run.
+            
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
                 ImageView img= (ImageView)findViewById(R.id.image);
